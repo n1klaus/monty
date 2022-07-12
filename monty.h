@@ -4,9 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
+#define STD_OUT 1
+#define STD_ERR 2
+#define STACK_SIZE 1024
+#define MAXLEN 100
+#define ISUNKNOWN 1;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -38,14 +45,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int (*get_opcode(char *opcode))(stack_t **top, unsigned int size);
-int push(stack_t **top, unsigned int size);
-int pall(stack_t **top, unsigned int size);
-int pint(stack_t **top, unsigned int size);
-int pop(stack_t **top, unsigned int size);
-int pop(stack_t **top, unsigned int size);
-int swap(stack_t **top, unsigned int size);
-int add(stack_t **top, unsigned int size);
-int nop(stack_t **top, unsigned int size);
+int file_stream(int ac, char **av);
+int (*get_opcode(char *op))(stack_t **top, unsigned int line);
+int push(stack_t **top, unsigned int line);
+int pall(stack_t **top, unsigned int line);
+int pint(stack_t **top, unsigned int line);
+int pop(stack_t **top, unsigned int line);
+int pop(stack_t **top, unsigned int line);
+int swap(stack_t **top, unsigned int line);
+int add(stack_t **top, unsigned int line);
+int nop(stack_t **top, unsigned int line);
 
 #endif /* __MONTY_H__ */
