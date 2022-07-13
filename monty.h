@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -47,13 +48,13 @@ typedef struct instruction_s
 
 int file_stream(int ac, char **av);
 int (*get_opcode(char *op))(stack_t **top, unsigned int line);
-int push(stack_t **top, unsigned int line);
+int push(stack_t **top, unsigned int line, unsigned int num);
 int pall(stack_t **top, unsigned int line);
 int pint(stack_t **top, unsigned int line);
 int pop(stack_t **top, unsigned int line);
 int pop(stack_t **top, unsigned int line);
 int swap(stack_t **top, unsigned int line);
 int add(stack_t **top, unsigned int line);
-int nop(stack_t **top, unsigned int line);
+int nop(stack_t **top, unsigned int line)
 
 #endif /* __MONTY_H__ */

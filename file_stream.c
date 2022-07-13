@@ -32,10 +32,11 @@ int file_stream(int ac, char **av)
 	{
 		while ((*token_str = strtok(*lineptr++, delim)) != NULL)
 		{
-			if ((get_opcode(token_str[0])(top, line)) == EXIT_FAILURE)
+			if ((get_opcode(token_str[0])(top, line)) ==
+					EXIT_FAILURE)
 			{
-				dprintf(STD_ERR, "L%d: unknown instruction %s", 
-				line, token_str[0]);
+				dprintf(STD_ERR, "L%d: unknown instruction %s",
+					line, token_str[0]);
 				return (EXIT_FAILURE);
 			}
 		}
