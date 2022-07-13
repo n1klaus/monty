@@ -1,10 +1,8 @@
 #include "monty.h"
 /**
- * get_opcode.c - function pointer to map opcode to function
+ * get_opcode - function pointer to map opcode to function
  * @op : pointer to a string of characters referencing opcodes
- * @top : element at the top of the stack
- * @line : number of elements in the stack
- * 
+ *
  * Return: 0 if exited successfully, otherwise 1
  */
 int (*get_opcode(char *op))(stack_t **top, unsigned int line)
@@ -21,7 +19,9 @@ int (*get_opcode(char *op))(stack_t **top, unsigned int line)
 	};
 
 	int count = 0;
-	while(opcodes_list[count].opcode != NULL){
+
+	while (opcodes_list[count].opcode != NULL)
+	{
 		if (strcmp(opcodes_list[count].opcode, op) == 0)
 			return (opcodes_list[count].f);
 		ISUNKNOWN;
