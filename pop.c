@@ -20,7 +20,7 @@ void pop(stack_t **top, unsigned int line)
 	}
 	else
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack", line);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
 		exit(EXIT_FAILURE);
 	}
 	exit(EXIT_SUCCESS);

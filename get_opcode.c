@@ -3,11 +3,11 @@
  * get_opcode - function pointer to map opcode to function
  * @op : pointer to a string of characters referencing opcodes
  *
- * Return: 0 if exited successfully, otherwise 1
+ * Return: Nothing
  */
 void (*get_opcode(char *op))(stack_t **top, unsigned int line)
 {
-	int line = 0, isUknown = 0;
+	int line = 1, isUknown = 0;
 
 	instruction_t opcodes_list[] = {
 		{"push", push},
@@ -31,7 +31,7 @@ void (*get_opcode(char *op))(stack_t **top, unsigned int line)
 	}
 	if (op == NULL || isUknown)
 	{
-		fprintf(stderr, "L%d: unknown instruction %s",
+		fprintf(stderr, "L%d: unknown instruction %s\n",
 			line, op);
 		exit(EXIT_FAILURE);
 

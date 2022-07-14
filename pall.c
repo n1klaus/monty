@@ -5,20 +5,21 @@
  * @top : element at the top of the stack
  * @line : line number in the bytecode file
  *
- * Return: 0 if exited successfully, otherwise 1
+ * Return: Nothing
  */
 void pall(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL;
 
 	temp = *top;
-	if (*top != NULL && line >= 1)
+	if (temp != NULL && line >= 1)
 	{
 		while (temp->prev != NULL)
 		{
-			fprintf(stdout, "%d", temp->n);
+			fprintf(stdout, "%d\n", temp->n);
 			temp = temp->prev;
 		}
+		exit(EXIT_SUCCESS);
 	}
-	exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }

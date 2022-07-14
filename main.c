@@ -10,7 +10,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		fprintf(stderr, "USAGE: monty file");
+		fprintf(stderr, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
 

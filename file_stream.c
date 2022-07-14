@@ -1,20 +1,22 @@
 #include "monty.h"
+#include "extern.h"
 /**
  * file_stream - get tokens from monty bytecode file
  * @ac : arguments count
  * @av : arguments array
+ *
  * Return: 0 if exited successfully, otherwise 1
  */
 int file_stream(__attribute__((unused))int ac, char **av)
 {
 	FILE *instream = NULL;
-	ssize_t numchar;
+	ssize_t numchar = 0;
 	size_t len = MAXLEN;
 	int line = 1;
 	char **lineptr = malloc(sizeof(char) * MAXLEN);
 	char **token_str = malloc(sizeof(char) * MAXLEN);
 	stack_t **top = malloc(sizeof(stack_t) * STACK_SIZE);
-	char *delim = " \t", *num_store = NULL;
+	char *delim = " :\t", *cpy_str = NULL;
 
 	if (lineptr == NULL || token_str == NULL || top == NULL)
 	{
@@ -27,17 +29,16 @@ int file_stream(__attribute__((unused))int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s", av[1]);
 		return (EXIT_FAILURE);
 	}
-	while ((numchar = getline(lineptr, &len, instream)) != -1)
+	while ((numchar = getline(lineptr, &len, instream)) != -1
+			&& numchar != EOF)
 	{
 		while ((*token_str = strtok(*lineptr++, delim)) != NULL)
 		{
 			get_opcode(token_str[0])(top, line);
 			if (token_str[1] != NULL)
-			{
-				num_store = token_str[1];
-				if (!num_store)
-					exit(EXIT_FAILURE);
-			}
+				num_store = atoi(strcpy(cpy_str,
+				token_str[1]));
+			fprintf(stdout, "%s : %d", token_str[0], num_store);
 		}
 		line++;
 	}

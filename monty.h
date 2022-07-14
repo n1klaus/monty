@@ -15,7 +15,7 @@
 #define EXIT_FAILURE 1
 #define STACK_SIZE 1024
 #define MAXLEN 100
-extern char *num_store;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
