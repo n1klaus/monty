@@ -1,9 +1,12 @@
 #ifndef __MONTY_H__
 #define __MONTY_H__
 
+#define  _POSIX_C_SOURCE 200809L
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <aio.h>
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -12,8 +15,7 @@
 #define EXIT_FAILURE 1
 #define STACK_SIZE 1024
 #define MAXLEN 100
-
-extern int stack_num;
+extern char *num_store;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

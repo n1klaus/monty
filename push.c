@@ -10,22 +10,23 @@
 void push(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL, *new = malloc(sizeof(stack_t) * STACK_SIZE);
-	int num = stack_num;
+	char *snum = NULL;
 
+	strcpy(snum, num_store);
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 
-	if (!num)
+	if (!atoi(snum))
 	{
 		fprintf(stderr, "L%d: usage: push integer", line);
 		exit(EXIT_FAILURE);
 	}
 
 	temp = *top;
-	new->n = num;
+	new->n = atoi(snum);
 	if (*top == NULL)
 		new->prev = NULL;
 	else

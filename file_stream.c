@@ -10,7 +10,7 @@ int file_stream(__attribute__((unused))int ac, char **av)
 	FILE *instream = NULL;
 	ssize_t numchar;
 	size_t len = MAXLEN;
-	int line = 1, stack_num = 0;
+	int line = 1;
 	char **lineptr = malloc(sizeof(char) * MAXLEN);
 	char **token_str = malloc(sizeof(char) * MAXLEN);
 	stack_t **top = malloc(sizeof(stack_t) * STACK_SIZE);
@@ -27,17 +27,17 @@ int file_stream(__attribute__((unused))int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s", av[1]);
 		return (EXIT_FAILURE);
 	}
-	while ((numchar = getline(lineptr, &len, instream)) != -1
-			&& numchar != EOF)
+	while ((numchar = getline(lineptr, &len, instream)) != -1)
 	{
 		while ((*token_str = strtok(*lineptr++, delim)) != NULL)
 		{
+			get_opcode(token_str[0])(top, line);
 			if (token_str[1] != NULL)
 			{
 				num_store = token_str[1];
-				stack_num = atoi(num_store);
+				if (!num_store)
+					exit(EXIT_FAILURE);
 			}
-			get_opcode(token_str[0])(top, line);
 		}
 		line++;
 	}
