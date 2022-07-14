@@ -2,7 +2,7 @@
 ## https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 # VS Code files for those working on multiple tools
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json

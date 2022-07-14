@@ -10,11 +10,10 @@
 
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
-#define STD_OUT 1
-#define STD_ERR 2
 #define STACK_SIZE 1024
 #define MAXLEN 100
-#define ISUNKNOWN 1;
+
+extern int stack_num;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -47,14 +46,14 @@ typedef struct instruction_s
 } instruction_t;
 
 int file_stream(int ac, char **av);
-int (*get_opcode(char *op))(stack_t **top, unsigned int line);
-int push(stack_t **top, unsigned int line, unsigned int num);
-int pall(stack_t **top, unsigned int line);
-int pint(stack_t **top, unsigned int line);
-int pop(stack_t **top, unsigned int line);
-int pop(stack_t **top, unsigned int line);
-int swap(stack_t **top, unsigned int line);
-int add(stack_t **top, unsigned int line);
-int nop(stack_t **top, unsigned int line)
+void (*get_opcode(char *op))(stack_t **top, unsigned int line);
+void push(stack_t **top, unsigned int line);
+void pall(stack_t **top, unsigned int line);
+void pint(stack_t **top, unsigned int line);
+void pop(stack_t **top, unsigned int line);
+void pop(stack_t **top, unsigned int line);
+void swap(stack_t **top, unsigned int line);
+void add(stack_t **top, unsigned int line);
+void nop(stack_t **top, unsigned int line);
 
 #endif /* __MONTY_H__ */

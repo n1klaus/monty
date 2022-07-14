@@ -6,7 +6,9 @@
  *
  * Return: Always 0
  */
-int nop(stack_t **top, unsigned int line)
+void nop(stack_t **top, unsigned int line)
 {
-	return (EXIT_SUCCESS);
+	if (top && line)
+		exit (EXIT_SUCCESS);
+	exit (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
  *
  * Return: 0 if exited successfully, otherwise 1
  */
-int pop(stack_t **top, unsigned int line)
+void pop(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL, *new_top = NULL;
 
@@ -20,8 +20,8 @@ int pop(stack_t **top, unsigned int line)
 	}
 	else
 	{
-		dprintf(STD_ERR, "L%d: can't pop an empty stack", line);
-		return (EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't pop an empty stack", line);
+		exit (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }

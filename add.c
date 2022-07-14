@@ -6,11 +6,11 @@
  *
  * Return: 0 if exited successfully, otherwise 1
  */
-int add(stack_t **top, unsigned int line)
+void add(stack_t **top, unsigned int line)
 {
 	stack_t *new_top = NULL;
 
-	if ((*top) != NULL && temp->prev != NULL && line >= 1)
+	if ((*top) != NULL && (*top)->prev != NULL && line >= 1)
 	{
 		new_top = (*top)->prev;
 		new_top->n = new_top->n + (*top)->n;
@@ -18,8 +18,8 @@ int add(stack_t **top, unsigned int line)
 	}
 	else
 	{
-		dprintf(STD_ERR, "L%d: can't add, stack too short", line);
-		return (EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't add, stack too short", line);
+		exit (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }

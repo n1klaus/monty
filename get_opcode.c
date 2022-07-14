@@ -5,8 +5,10 @@
  *
  * Return: 0 if exited successfully, otherwise 1
  */
-int (*get_opcode(char *op))(stack_t **top, unsigned int line)
+void (*get_opcode(char *op))(stack_t **top, unsigned int line)
 {
+	int line = 0, isUknown = 0;
+
 	instruction_t opcodes_list[] = {
 		{"push", push},
 		{"pall", pall},
@@ -24,11 +26,15 @@ int (*get_opcode(char *op))(stack_t **top, unsigned int line)
 	{
 		if (strcmp(opcodes_list[count].opcode, op) == 0)
 			return (opcodes_list[count].f);
-		ISUNKNOWN;
+		isUknown = 1;
 		count++;
 	}
-	if (op == NULL || ISUNKNOWN)
-		return (EXIT_FAILURE);
+	if (op == NULL || isUknown)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s",
+			line, op);
+		exit (EXIT_FAILURE);
 
-	return (EXIT_SUCCESS);
+	}
+	exit (EXIT_SUCCESS);
 }

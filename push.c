@@ -5,26 +5,28 @@
  * @line : line number in the bytecode file
  * @num : integer number to push
  *
- * Return: 0 if exited successfully, otherwise 1
+ * Return: Nothing
+ * Exit status: 0 if exited successfully, otherwise 1
  */
-int push(stack_t **top, unsigned int line, char *num)
+void push(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL, *new = malloc(sizeof(stack_t) * STACK_SIZE);
+	int num = stack_num;
 
 	if (new == NULL)
 	{
-		dprintf(STD_ERR, "Error: malloc failed");
-		return (EXIT_FAILURE);
+		fprintf(stderr, "Error: malloc failed");
+		exit (EXIT_FAILURE);
 	}
 
-	if (num == NULL || !atoi(num))
+	if (!num)
 	{
-		dprintf(STD_ERR, "L%d: usage: push integer", line);
-		return (EXIT_FAILURE);
+		fprintf(stderr, "L%d: usage: push integer", line);
+		exit (EXIT_FAILURE);
 	}
 
 	temp = *top;
-	new->n = atoi(num);
+	new->n = num;
 	if (*top == NULL)
 		new->prev = NULL;
 	else
@@ -34,5 +36,5 @@ int push(stack_t **top, unsigned int line, char *num)
 	}
 	new->next = NULL;
 	*top = new;
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }

@@ -7,17 +7,17 @@
  *
  * Return: 0 if exited successfully, otherwise 1
  */
-int pint(stack_t **top, unsigned int line)
+void pint(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL;
 
 	temp = *top;
 	if (*top != NULL && line >= 1)
-		dprintf(STD_OUT, temp->n);
+		fprintf(stdout, "%d", temp->n);
 	else
 	{
-		dprintf(STD_ERR, "L%d: can't pint, stack empty", line);
-		return (EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't pint, stack empty", line);
+		exit (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }

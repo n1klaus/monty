@@ -7,7 +7,7 @@
  *
  * Return: 0 if exited successfully, otherwise 1
  */
-int pall(stack_t **top, unsigned int line)
+void pall(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL;
 
@@ -16,9 +16,9 @@ int pall(stack_t **top, unsigned int line)
 	{
 		while (temp->prev != NULL)
 		{
-			dprintf(STD_OUT, temp->n);
+			fprintf(stdout, "%d", temp->n);
 			temp = temp->prev;
 		}
 	}
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }

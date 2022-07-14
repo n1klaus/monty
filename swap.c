@@ -6,7 +6,7 @@
  *
  * Return: 0 if exited successfully, otherwise 1
  */
-int swap(stack_t **top, unsigned int line)
+void swap(stack_t **top, unsigned int line)
 {
 	stack_t *old_top = NULL, *new_top = NULL;
 
@@ -28,8 +28,8 @@ int swap(stack_t **top, unsigned int line)
 	}
 	else
 	{
-		dprintf(STD_ERR, "L%d: can't swap, stack too short", line);
-		return (EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't swap, stack too short", line);
+		exit (EXIT_FAILURE);
 	}
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }
