@@ -33,8 +33,8 @@ void (*get_opcode(char *op))(stack_t **top, unsigned int line)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s",
 			line, op);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 
 	}
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

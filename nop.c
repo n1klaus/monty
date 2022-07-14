@@ -9,6 +9,6 @@
 void nop(stack_t **top, unsigned int line)
 {
 	if (top && line)
-		exit (EXIT_SUCCESS);
-	exit (EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }

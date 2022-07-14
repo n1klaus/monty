@@ -14,23 +14,20 @@ int file_stream(__attribute__((unused))int ac, char **av)
 	char **lineptr = malloc(sizeof(char) * MAXLEN);
 	char **token_str = malloc(sizeof(char) * MAXLEN);
 	stack_t **top = malloc(sizeof(stack_t) * STACK_SIZE);
-	char *delim = " \t";
-	char *num_store = NULL;
+	char *delim = " \t", *num_store = NULL;
 
 	if (lineptr == NULL || token_str == NULL || top == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
 		return (EXIT_FAILURE);
 	}
-
 	instream = fopen(av[1], "r");
 	if (instream == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s", av[1]);
 		return (EXIT_FAILURE);
 	}
-
-	while ((numchar = getline(lineptr, &len, instream)) != -1 
+	while ((numchar = getline(lineptr, &len, instream)) != -1
 			&& numchar != EOF)
 	{
 		while ((*token_str = strtok(*lineptr++, delim)) != NULL)
@@ -38,16 +35,7 @@ int file_stream(__attribute__((unused))int ac, char **av)
 			if (token_str[1] != NULL)
 			{
 				num_store = token_str[1];
-				if (num_store == NULL || !atoi(num_store))
-				{
-					fprintf(stderr, "L%d: usage: push integer", line);
-					return (EXIT_FAILURE);
-				}
 				stack_num = atoi(num_store);
-				if (!stack_num)
-				{
-					return (EXIT_FAILURE);
-				}
 			}
 			get_opcode(token_str[0])(top, line);
 		}

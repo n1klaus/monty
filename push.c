@@ -3,7 +3,6 @@
  * push - pushes an element to the stack
  * @top : element at the top of the stack
  * @line : line number in the bytecode file
- * @num : integer number to push
  *
  * Return: Nothing
  * Exit status: 0 if exited successfully, otherwise 1
@@ -16,13 +15,13 @@ void push(stack_t **top, unsigned int line)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	if (!num)
 	{
 		fprintf(stderr, "L%d: usage: push integer", line);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	temp = *top;
@@ -36,5 +35,5 @@ void push(stack_t **top, unsigned int line)
 	}
 	new->next = NULL;
 	*top = new;
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

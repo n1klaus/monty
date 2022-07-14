@@ -20,5 +20,5 @@ void pall(stack_t **top, unsigned int line)
 			temp = temp->prev;
 		}
 	}
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
