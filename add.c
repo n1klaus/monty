@@ -4,17 +4,17 @@
  * @top : element at the top of the stack
  * @line : line number in the bytecode file
  *
- * Return: 0 if exited successfully, otherwise 1
+ * Return: Nothing
  */
 void add(stack_t **top, unsigned int line)
 {
-	stack_t *new_top = NULL;
+	stack_t *new_top = NULL, *temp = *top;
 
-	if ((*top) != NULL && (*top)->prev != NULL && line >= 1)
+	if (temp != NULL && temp->next != NULL && line >= 1)
 	{
-		new_top = (*top)->prev;
-		new_top->n = new_top->n + (*top)->n;
-		pop(top, line);
+		new_top = temp->next;
+		new_top->n = new_top->n + temp->n;
+		pop(&temp, line);
 	}
 	else
 	{

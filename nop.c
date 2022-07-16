@@ -4,7 +4,7 @@
  * @top : element at the top of the stack
  * @line : line number in the bytecode file
  *
- * Return: Always 0
+ * Return: Nothing
  */
 void nop(stack_t **top, unsigned int line)
 {

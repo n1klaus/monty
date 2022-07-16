@@ -14,6 +14,6 @@ int main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 
-	file_stream(ac, av);
+	file_stream(av);
 	return (EXIT_SUCCESS);
 }

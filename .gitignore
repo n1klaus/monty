@@ -26,5 +26,6 @@ bld/
 [Ll]ogs/
 
 vgcore*
-*monty
+*monty*
 *.o
+*.m

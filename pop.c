@@ -4,18 +4,18 @@
  * @top : element at the top of the stack
  * @line : line number in the bytecode file
  *
- * Return: 0 if exited successfully, otherwise 1
+ * Return: Nothing
  */
 void pop(stack_t **top, unsigned int line)
 {
 	stack_t *temp = NULL, *new_top = NULL;
 
 	temp = *top;
-	if (*top != NULL && line >= 1)
+	if (temp != NULL && line >= 1)
 	{
-		new_top = temp->prev;
+		new_top = temp->next;
+		new_top->prev = NULL;
 		*top = new_top;
-		new_top->next = NULL;
 		free(temp);
 	}
 	else

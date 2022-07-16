@@ -7,7 +7,7 @@
  */
 void (*get_opcode(char *op))(stack_t **top, unsigned int line)
 {
-	int line = 1, isUknown = 0;
+	int line = 1, isUNKNOWN = 0;
 
 	instruction_t opcodes_list[] = {
 		{"push", push},
@@ -26,10 +26,10 @@ void (*get_opcode(char *op))(stack_t **top, unsigned int line)
 	{
 		if (strcmp(opcodes_list[count].opcode, op) == 0)
 			return (opcodes_list[count].f);
-		isUknown = 1;
+		isUNKNOWN = 1;
 		count++;
 	}
-	if (op == NULL || isUknown)
+	if (op == NULL || isUNKNOWN)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n",
 			line, op);

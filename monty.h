@@ -13,10 +13,10 @@
 
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
-#define STACK_SIZE 1024
+#define STACK_SIZE 20
 #define MAXLEN 100
 
-
+extern int num_store;
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -47,7 +47,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int file_stream(int ac, char **av);
+int is_alpha(char *str);
+int is_digit(char *str);
+int file_stream(char **av);
+void free_stack_t(stack_t **top);
 void (*get_opcode(char *op))(stack_t **top, unsigned int line);
 void push(stack_t **top, unsigned int line);
 void pall(stack_t **top, unsigned int line);

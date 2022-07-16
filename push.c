@@ -1,8 +1,8 @@
 #include "monty.h"
-#include "extern.h"
+extern int num_store;
 /**
- * push - pushes an element to the stack
- * @top : element at the top of the stack
+ * push - pushes an element to the beginning of the stack
+ * @top : element at the top/beginning of the stack
  * @line : line number in the bytecode file
  *
  * Return: Nothing
@@ -17,7 +17,8 @@ void push(stack_t **top, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 
-	if (num_store <= 0)
+	fprintf(stdout, "Push Int:=> %d\n", num_store);
+	if (!num_store)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
@@ -25,14 +26,10 @@ void push(stack_t **top, unsigned int line)
 
 	temp = *top;
 	new->n = num_store;
-	if (*top == NULL)
-		new->prev = NULL;
-	else
-	{
-		temp->next = new;
-		new->prev = temp;
-	}
-	new->next = NULL;
+	if (temp != NULL)
+		temp->prev = new;
+	new->next = temp;
+	new->prev = NULL;
 	*top = new;
 	exit(EXIT_SUCCESS);
 }

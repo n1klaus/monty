@@ -1,4 +1,5 @@
 # monty
+Bytecode intepretor for Monty language bytecode
 
 | Version | Opcode | Description |
 | -- | -- | -- |
@@ -10,5 +11,8 @@
 |v 0.4 | add | adds the top two elements of the stack |
 |v 0.5 | nop  | does nothing |
 
-# Usage
+# Compilation
     gcc -Wall -Wextra -Werror -pedantic -std=gnu89 *.c -o monty
+
+# Usage
+    ./monty 00.m

@@ -14,12 +14,13 @@ void pall(stack_t **top, unsigned int line)
 	temp = *top;
 	if (temp != NULL && line >= 1)
 	{
-		while (temp->prev != NULL)
+		while (temp != NULL)
 		{
 			fprintf(stdout, "%d\n", temp->n);
-			temp = temp->prev;
+			temp = temp->next;
 		}
-		exit(EXIT_SUCCESS);
 	}
-	exit(EXIT_FAILURE);
+	else
+		exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
